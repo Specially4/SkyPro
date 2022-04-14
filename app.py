@@ -13,7 +13,7 @@ with open('candidates.json', encoding='utf-8') as file:
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/")  # Главная страница, со списком кандидатов
 def page_index():
     list_candidates = ''
     for i in stock:
@@ -23,7 +23,7 @@ def page_index():
     return (f'<h2>Главная страничка</h2>' + list_candidates)
 
 
-@app.route("/candidates/<x>")
+@app.route("/candidates/<x>")  # Поиск кандидатов по ID
 def page_candidates(x):
     for i in stock:
         if x in str(i['id']):
@@ -33,7 +33,7 @@ def page_candidates(x):
         else:
             continue
 
-@app.route("/skills/<x>")
+@app.route("/skills/<x>")  # Поиск кандидатов по скиллам
 def page_skills(x):
     list_candidates = ''
     for i in stock:
